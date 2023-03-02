@@ -1,5 +1,6 @@
-//Get button element and add event listeners
-//Creating return Element button, also returns elements as Array which can be iterated
+//Array of objects that contain all of the questions, options and 
+//correct answers of the quiz
+
 const questions = [
     {
         'question': 'What is the Mitchondria?',
@@ -36,8 +37,13 @@ const questions = [
     
 ];
 
+
+//Initialise values 
+
 let questionIndex = 0;
 let score = 0;
+
+//Function displays relevant question on the page via accessing objects within the questions array
 
 function displayScienceQuestion(index) {
     const question = questions[index];
@@ -48,6 +54,7 @@ function displayScienceQuestion(index) {
     document.getElementById('option-4').textContent = question.option4;
 }
 
+//Checks if users selection is correct and adds to score total
 function checkAnswer(buttonIndex, button) {
     const answer = questions[questionIndex].answer;
     console.info(answer);
@@ -76,27 +83,31 @@ function checkAnswer(buttonIndex, button) {
  * and after the user's answer has been processed
  */
 
+//Main loop, starts when script is first loaded and once users selected answer has been processed
+//Else loop displays users score and resets index and variables after quiz is completed
+
 function runGame(gameType) {
     const questionLength = questions.length;
     if (questionIndex < questionLength){
         displayScienceQuestion(questionIndex);
-    }else{
+    } 
+    else{
         document.getElementById('quiz').classList.add('hide');
         document.getElementById('score-text').innerHTML = `Game over, your score is ${score}`;
         document.getElementById('home').classList.remove('hide');
         questionIndex = 0;
         score = 0;
     }
-    //Create 2 random numbers between 1 and 25
-    // let num1 = Math.floor(Math.random() * 25) + 1;
-    // let num2 = Math.floor(Math.random() * 25) + 1;
+    
 
 }
+
+//Event listeners for the web pages buttons
 
 document.addEventListener("DOMContentLoaded", function() {
     let buttons = document.getElementsByClassName("option");
     
-    for (let button of buttons) { //This code creates an alert box to tell user what they just clicked
+    for (let button of buttons) { 
         button.addEventListener("click", function(){
             if (this.getAttribute("data-type") === "submit") {
                 alert("You clicked Submit!");
@@ -127,28 +138,3 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-function calculateCorrectAnswer () {
-
-}
-
-function incrementScore() {
-
-}
-
-function incrementWrongAnswers() {
-
-}
-
-
-
-function displayTechnologyQuestion() {
- 
-}
-
-function displayEngineerQuestion() {
-
-}
-
-function displayMathQuestion() {
-
-}
