@@ -37,6 +37,7 @@ const questions = [
 ];
 
 let questionIndex = 0;
+let score = 0;
 
 function displayScienceQuestion(index) {
     const question = questions[index];
@@ -47,19 +48,25 @@ function displayScienceQuestion(index) {
     document.getElementById('option-4').textContent = question.option4;
 }
 
-function checkAnswer(buttonIndex) {
+function checkAnswer(buttonIndex, button) {
     const answer = questions[questionIndex].answer;
-    console.info('Button clicked');
-    console.info(buttonIndex);
-    console.info('Answer');
     console.info(answer);
     if (answer === buttonIndex){
+        score = score + 1;
+        
+        button.classList.add('correct');
         console.info('Good');
     }else{
+        button.classList.add('incorrect');
         console.info('Bad');
     }
     questionIndex = questionIndex + 1;
-    runGame('science');
+    setTimeout(() => {
+        button.classList.remove('incorrect');
+        button.classList.remove('correct');
+        runGame('science');
+    }, 1000);
+    
 
 }
 
@@ -73,6 +80,12 @@ function runGame(gameType) {
     const questionLength = questions.length;
     if (questionIndex < questionLength){
         displayScienceQuestion(questionIndex);
+    }else{
+        document.getElementById('quiz').classList.add('hide');
+        document.getElementById('score-text').innerHTML = `Game over, your score is ${score}`;
+        document.getElementById('home').classList.remove('hide');
+        questionIndex = 0;
+        score = 0;
     }
     //Create 2 random numbers between 1 and 25
     // let num1 = Math.floor(Math.random() * 25) + 1;
@@ -81,15 +94,15 @@ function runGame(gameType) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    let buttons = document.getElementsByTagName("button");
+    let buttons = document.getElementsByClassName("option");
     
     for (let button of buttons) { //This code creates an alert box to tell user what they just clicked
         button.addEventListener("click", function(){
             if (this.getAttribute("data-type") === "submit") {
                 alert("You clicked Submit!");
             } else {
-                const buttonIndex = this.getAttribute("data-index");
-                checkAnswer(buttonIndex)
+                const buttonIndex = this.getAttribute("value");
+                checkAnswer(buttonIndex, this);
 
             }
         }) 
@@ -97,7 +110,16 @@ document.addEventListener("DOMContentLoaded", function() {
         
     }
     
-    runGame("science");
+
+    document.getElementById('show_rules').addEventListener('click', function(){
+        document.getElementById('rules').classList.remove('hide');
+    });
+    document.getElementById('play').addEventListener('click', function(){
+        document.getElementById('rules').classList.add('hide');
+        document.getElementById('home').classList.add('hide');
+        document.getElementById('quiz').classList.remove('hide');
+        runGame("science");
+    });
 
 })
 

@@ -13,12 +13,34 @@
 
 <body>
     <div class="container">
-        <div id="home" class="flex-column flex center">
-            <h1>Ready Stem Go!</h1>
-            <a href="rulesPage.html" class="btn">Play
-            <i class="fa-solid fa-gamepad"></i></a>
-            
+        <div class="flex-column flex center hide"  id="rules">
+            <h1>Rules</h1>
+            <div>
+                <li>
+                    <h6>The Rules are simple:</h6>
+                    <ul>You must complete all of the questions presented to you</ul>
+                    <ul>You must complete the quiz before the timer runs out</ul>
+                    
+                </li>
+            </div>
         </div>
+        <div class="flex-column flex center hide"  id="quiz">
+            <h1 id="question"></h1>
+            <a href="#" class="btn option" id="option-1" value="option1"> </a>
+            <a href="#" class="btn option" id="option-2" value="option2"> </a>
+            <a href="#" class="btn option" id="option-3" value="option3"> </a>
+            <a href="#" class="btn option" id="option-4" value="option4"> </a>
+        </div>
+        <div id="home" class="flex-column flex center">
+            <h1 id="score-text">Ready Stem Go!</h1>
+            <a href="#" class="btn" id="play">Play
+                <i class="fa-solid fa-gamepad"></i>
+            </a>
+            <a href="#" class="btn" id="show_rules">Rules
+                <i class="fa-solid fa-book"></i>
+            </a>
+        </div>
+        
     </div>
 
 
