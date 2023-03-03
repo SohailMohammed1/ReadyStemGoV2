@@ -67,6 +67,7 @@ function checkAnswer(buttonIndex, button) {
         button.classList.add('incorrect');
         console.info('Bad');
     }
+    //Resets class with a delay of 1 second/ increment index
     questionIndex = questionIndex + 1;
     setTimeout(() => {
         button.classList.remove('incorrect');
@@ -78,19 +79,19 @@ function checkAnswer(buttonIndex, button) {
 }
 
 
-/**
- * The main game "loop", called when the script is first loaded
- * and after the user's answer has been processed
- */
+
 
 //Main loop, starts when script is first loaded and once users selected answer has been processed
-//Else loop displays users score and resets index and variables after quiz is completed
+
 
 function runGame(gameType) {
     const questionLength = questions.length;
+
+    //Checks whether or not there are more questions to display
     if (questionIndex < questionLength){
         displayScienceQuestion(questionIndex);
     } 
+    //Displays users score and resets index and variables after quiz is completed
     else{
         document.getElementById('quiz').classList.add('hide');
         document.getElementById('score-text').innerHTML = `Game over, your score is ${score}`;
@@ -102,7 +103,7 @@ function runGame(gameType) {
 
 }
 
-//Event listeners for the web pages buttons
+//Event listeners for the web pages buttons 
 
 document.addEventListener("DOMContentLoaded", function() {
     let buttons = document.getElementsByClassName("option");
