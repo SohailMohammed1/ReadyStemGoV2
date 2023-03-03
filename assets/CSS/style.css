@@ -1,0 +1,110 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  [class*="col-"] {
+    float: left;
+    padding: 15px;
+  }
+  
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+}
+
+.hide{
+    display: none;
+}
+
+/*button properties*/
+.btn {
+    font-size: 2.4rem;
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-decoration: none;
+    color: rgb(28,26,26);
+    background: linear-gradient(90deg, rgb(18,92,255) 0%, rgb(0, 102, 255) 100%);
+    border-radius: 4px;
+    display: block;
+}
+
+.btn:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgb(8, 114, 244, 0.6) ;
+    transition: transform 150ms;
+    transform: scale(1.03);
+}
+
+.btn[disabled]:hover {
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+
+
+#score-text{ 
+    text-align: center;
+}
+
+#question{
+    text-align: center;
+}
+
+body {
+    background-color: black;
+}
+
+
+h1, h6, ul {
+    font-size: 2rem;
+    color: aliceblue;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+
+}
+
+h2 {
+    font-size: 4.2rem;
+    margin-bottom: 4rem;
+}
+
+
+.fa-award {
+    font-size: 2.5rem;
+    margin-left: 1rem;
+
+}
+
+/* highlights answer either green or red */ 
+  .correct{
+    background: green !important;
+  }
+
+  .incorrect{
+    background: red !important;
+  }
+

@@ -6,28 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" 
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/CSS/frontPage.css">
-    
+    <link rel="stylesheet" href="assets/CSS/style.css">
     <title>Home Page</title>
 </head>
 
 <!-- Rules -->
 <body>
-    <div class="container">
-        <div class="flex-column flex center hide"  id="rules">
+    <div class="row">
+       
+        <!-- 1st page for users to interact with -->
+        <div id="home" class="col-12">
+            <h1 id="score-text">Ready Stem Go!</h1>
+            <div class="col-2"></div>
+            <div class="col-4">
+                <a href="#" class="btn" id="play">Play
+                    <i class="fa-solid fa-gamepad"></i>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="#" class="btn" id="show_rules">Rules
+                    <i class="fa-solid fa-book"></i>
+                </a>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="col-12 hide"  id="rules">
             <h1>Rules</h1>
             <div>
                 <li>
                     <h6>The Rules are simple:</h6>
                     <ul>You must complete all of the questions presented to you</ul>
-                    <ul>You must complete the quiz before the timer runs out</ul>
-                    
                 </li>
             </div>
         </div>
         
         <!-- Questions template once "play" is selected -->
-        <div class="flex-column flex center hide"  id="quiz">
+        <div class="col-12 hide"  id="quiz">
             <h1 id="question"></h1>
             <a href="#" class="btn option" id="option-1" value="option1"> </a>
             <a href="#" class="btn option" id="option-2" value="option2"> </a>
@@ -35,16 +49,6 @@
             <a href="#" class="btn option" id="option-4" value="option4"> </a>
         </div>
 
-        <!-- 1st page for users to interact with -->
-        <div id="home" class="flex-column flex center">
-            <h1 id="score-text">Ready Stem Go!</h1>
-            <a href="#" class="btn" id="play">Play
-                <i class="fa-solid fa-gamepad"></i>
-            </a>
-            <a href="#" class="btn" id="show_rules">Rules
-                <i class="fa-solid fa-book"></i>
-            </a>
-        </div>
         
     </div>
 
