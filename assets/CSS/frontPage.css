@@ -1,6 +1,6 @@
 /* //Credit to: https://www.youtube.com/watch?v=f4fB9Xg2JEY&ab_channel=BrianDesign */
 
-/* Styling question and answer boxes*/
+/*Homepage/ Rules appearance properties*/
 
 body {
     background-color: black;
@@ -11,6 +11,9 @@ h1, h6, ul {
     font-size: 2rem;
     color: aliceblue;
     margin-bottom: 2rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+
 }
 
 h2 {
@@ -51,6 +54,13 @@ h2 {
     display: none;
 }
 
+.hide {
+    display: none;
+}
+
+.rulesBorder {
+}
+
 /*button properties*/
 .btn {
     font-size: 2.4rem;
@@ -86,10 +96,6 @@ h2 {
 }
 
 /* highlights answer either green or red */ 
-.hide {
-    display: none;
-  }
-
   .correct{
     background: green !important;
   }
