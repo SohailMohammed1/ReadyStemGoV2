@@ -44,15 +44,28 @@ let questionIndex = 0;
 let score = 0;
 
 //Function displays relevant question on the page via accessing objects within the questions array
-
 function displayScienceQuestion(index) {
     const question = questions[index];
     document.getElementById('question').textContent = question.question;
     document.getElementById('option-1').textContent = question.option1;
+    document.getElementById('option-1').setAttribute('value', 'option1');
     document.getElementById('option-2').textContent = question.option2;
+    document.getElementById('option-2').setAttribute('value', 'option2');
     document.getElementById('option-3').textContent = question.option3;
+    document.getElementById('option-3').setAttribute('value', 'option3');
     document.getElementById('option-4').textContent = question.option4;
+    document.getElementById('option-4').setAttribute('value', 'option4');
 }
+
+
+// function displayScienceQuestion(index) {
+//     const question = questions[index];
+//     document.getElementById('question').textContent = question.question;
+//     document.getElementById('option-1').textContent = question.option1;
+//     document.getElementById('option-2').textContent = question.option2;
+//     document.getElementById('option-3').textContent = question.option3;
+//     document.getElementById('option-4').textContent = question.option4;
+// }
 
 //Checks if users selection is correct and adds to score total
 function checkAnswer(buttonIndex, button) {
