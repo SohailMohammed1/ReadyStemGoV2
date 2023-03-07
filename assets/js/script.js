@@ -1,6 +1,5 @@
 //Array of objects that contain all of the questions, options and 
 //correct answers of the quiz
-
 const questions = [
     {
         'question': 'What is the Mitchondria?',
@@ -33,17 +32,14 @@ const questions = [
         'option3': '5',
         'option4': '7',
         'answer': 'option2'
-    },     
-    
+    }
 ];
 
-
-//Initialise values 
-
+//Initialize values 
 let questionIndex = 0;
 let score = 0;
 
-//Function displays relevant question on the page via accessing objects within the questions array
+//Function to display relevant question on the page via accessing objects within the questions array
 function displayScienceQuestion(index) {
     const question = questions[index];
     document.getElementById('question').textContent = question.question;
@@ -57,83 +53,59 @@ function displayScienceQuestion(index) {
     document.getElementById('option-4').setAttribute('value', 'option4');
 }
 
-
-// function displayScienceQuestion(index) {
-//     const question = questions[index];
-//     document.getElementById('question').textContent = question.question;
-//     document.getElementById('option-1').textContent = question.option1;
-//     document.getElementById('option-2').textContent = question.option2;
-//     document.getElementById('option-3').textContent = question.option3;
-//     document.getElementById('option-4').textContent = question.option4;
-// }
-
-//Checks if users selection is correct and adds to score total
+//Function to check if user's selection is correct and adds to score total
 function checkAnswer(buttonIndex, button) {
     const answer = questions[questionIndex].answer;
     console.info(answer);
-    if (answer === buttonIndex){
+    if (answer === buttonIndex) {
         score = score + 1;
-        
         button.classList.add('correct');
         console.info('Good');
-    }else{
+    } else {
         button.classList.add('incorrect');
         console.info('Bad');
     }
-    //Resets class with a delay of 1 second/ increment index
-    questionIndex = questionIndex + 1;
+    //Reset class with a delay of 1 second/increment index
     setTimeout(() => {
         button.classList.remove('incorrect');
         button.classList.remove('correct');
+        questionIndex++;
         runGame('science');
     }, 1000);
-    
-
 }
 
-
-
-
-//Main loop, starts when script is first loaded and once users selected answer has been processed
-
-
+//Main loop, starts when script is first loaded and once user's selected answer has been processed
 function runGame(gameType) {
     const questionLength = questions.length;
-
-    //Checks whether or not there are more questions to display
-    if (questionIndex < questionLength){
+    //Check whether or not there are more questions to display
+    if (questionIndex < questionLength) {
         displayScienceQuestion(questionIndex);
-    } 
-    //Displays users score and resets index and variables after quiz is completed
-    else{
+    } else {
         document.getElementById('quiz').classList.add('hide');
         document.getElementById('score-text').innerHTML = `Game over, your score is ${score}`;
         document.getElementById('home').classList.remove('hide');
         questionIndex = 0;
         score = 0;
     }
-    
-
 }
 
-//Event listeners for the web pages buttons 
-
+//Event listeners for the web page's buttons 
 document.addEventListener("DOMContentLoaded", function() {
     let buttons = document.getElementsByClassName("option");
     
     for (let button of buttons) { 
-        button.addEventListener("click", function(){
-            if (this.getAttribute("data-type") === "submit") {
-                alert("You clicked Submit!");
-            } else {
-                const buttonIndex = this.getAttribute("value");
-                checkAnswer(buttonIndex, this);
-
-            }
-        }) 
+  		if (button.getAttribute("data-type") === "submit") {
+    		button.addEventListener("click", function(){
+      		alert("You clicked Submit!");
+    		});
+  		} else {
+    		button.addEventListener("click", checkAnswer.bind(null, button.getAttribute("value"), button));
+  		}
+    }
+        });
 
         
-    }
+    
     
 
     document.getElementById('show_rules').addEventListener('click', function(){
@@ -146,7 +118,14 @@ document.addEventListener("DOMContentLoaded", function() {
         runGame("science");
     });
 
-})
+
+
+
+
+
+
+
+
 
 
 
