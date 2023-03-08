@@ -88,6 +88,7 @@ Ready Stem Go! is an online quiz aimed to test young children and adults on thei
 ```
 - Another bug was found within the JavaScript code when trying to pass it through the validator: 
 ![JavaScript_bug](./assets/images/javabug.png)
+
 By using my own initiative and with some help from ChatGpt, I was able to rewrite the code slightly so that the error was fixed. 
 
 ## **Validator Testing**
@@ -103,7 +104,19 @@ By using my own initiative and with some help from ChatGpt, I was able to rewrit
 
 ## **Deployment**
 
-- 
+- The site was deployed to GitHub pages. These are the steps: 
+    - Within the GitHub repository page, navigate to the settings tab. 
+    - On the left hand side of the page, navigate to the Pages option
+    - In the Build and Deploy section, ensure that Deploy From Branch is selected underneath the source heading and that Main is selected beneath the Branch heading. 
+    - Once these conditions have been filled, the page should provide a link to the website.
+
+This is the live link: https://sohailmohammed1.github.io/ReadyStemGoV2/
+
+## **Credits**
+- ChatGpt was used to help debug some parts of the code within JavaScript. 
+- Credit to: https://www.youtube.com/watch?v=f4fB9Xg2JEY&ab_channel=BrianDesign for the design template of the quiz. 
+- FontAwesome for the icons
+
 
 
 
