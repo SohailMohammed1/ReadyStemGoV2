@@ -35,7 +35,7 @@ const questions = [
     }
 ];
 
-//Initialize values 
+//Initialize the values 
 let questionIndex = 0;
 let score = 0;
 
@@ -65,7 +65,7 @@ function checkAnswer(buttonIndex, button) {
         button.classList.add('incorrect');
         console.info('Bad');
     }
-    //Reset class with a delay of 1 second/increment index
+//Reset class with a delay of 1 second/increment index
     setTimeout(() => {
         button.classList.remove('incorrect');
         button.classList.remove('correct');
@@ -77,7 +77,7 @@ function checkAnswer(buttonIndex, button) {
 //Main loop, starts when script is first loaded and once user's selected answer has been processed
 function runGame(gameType) {
     const questionLength = questions.length;
-    //Check whether or not there are more questions to display
+//Check whether or not there are more questions to display
     if (questionIndex < questionLength) {
         displayScienceQuestion(questionIndex);
     } else {
