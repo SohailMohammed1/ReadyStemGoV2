@@ -86,10 +86,15 @@ Ready Stem Go! is an online quiz aimed to test young children and adults on thei
     display: none;
 }
 ```
-- Another bug was found within the JavaScript code when trying to pass it through the validator: 
+- The second bug was found within the JavaScript code when trying to pass it through the validator: 
 ![JavaScript_bug](./assets/images/javabug.png)
 
 By using my own initiative and with some help from ChatGpt, I was able to rewrite the code slightly so that the error was fixed. 
+
+- The third bug that was detected was that the users could still click onto option within the question once one had been selected. This led to the programme taking in multiple answers at once and adding them onto the score whilst skipping over the next question. This then created an inaccurate measurement of the users intelligence. 
+
+To fix this, I created an ```answer```variable to track whether or not an answer had been selected. Also, I had created a ```checkAnswer``` function that would check whether or not to exit the function if the answer had been selected. Buttons were then disabled by creating an iteration over the buttons and, at the same time, setting the ```disabled``` property to ```true```. Finally, the buttons were then enabled before displaying the next question by setting the ```disabled``` property to ```false```. 
+
 
 ## **Validator Testing**
 - HTML:
@@ -113,7 +118,7 @@ By using my own initiative and with some help from ChatGpt, I was able to rewrit
 This is the live link: https://sohailmohammed1.github.io/ReadyStemGoV2/
 
 ## **Credits**
-- ChatGpt was used to help debug some parts of the code within JavaScript. 
+- ChatGpt was used to help debug some parts of the code within JavaScript, including the multiple choice bug.  
 - Credit to: https://www.youtube.com/watch?v=f4fB9Xg2JEY&ab_channel=BrianDesign for the design template of the quiz. 
 - FontAwesome for the icons
 

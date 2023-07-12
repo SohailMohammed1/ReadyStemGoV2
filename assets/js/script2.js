@@ -34,28 +34,33 @@ const questions = [
   }
 ];
 
-//Initialize the values 
+// Initialize the values
 let questionIndex = 0;
 let score = 0;
 let answered = false;
 
-//Function to display relevant question on the page via accessing objects within the questions array
+// Function to display relevant question on the page via accessing objects within the questions array
 function displayScienceQuestion(index) {
   const question = questions[index];
   document.getElementById('question').textContent = question.question;
   document.getElementById('option-1').textContent = question.option1;
+  document.getElementById('option-1').setAttribute('value', 'option1');
   document.getElementById('option-2').textContent = question.option2;
+  document.getElementById('option-2').setAttribute('value', 'option2');
   document.getElementById('option-3').textContent = question.option3;
+  document.getElementById('option-3').setAttribute('value', 'option3');
   document.getElementById('option-4').textContent = question.option4;
+  document.getElementById('option-4').setAttribute('value', 'option4');
 }
 
 // Function to check if the user's selection is correct and update the score
+// Exit the function if an answer has already been selected
 function checkAnswer(buttonIndex, button) {
   if (answered) {
-    return; // Exit the function if an answer has already been selected
+    return; 
   }
 
-  answered = true; 
+  answered = true;
 
   const answer = questions[questionIndex].answer;
   if (answer === buttonIndex) {
@@ -71,42 +76,31 @@ function checkAnswer(buttonIndex, button) {
     btn.disabled = true;
   }
 
-
-//Reset class with a delay of 3 second/increment index
+  // Reset class with a delay of 3 seconds/increment index
   setTimeout(() => {
-      button.classList.remove('incorrect');
-      button.classList.remove('correct');
-      questionIndex++;
-      runGame('science');
+    button.classList.remove('incorrect');
+    button.classList.remove('correct');
+    questionIndex++;
+    runGame('science');
   }, 3000);
-}
-
-// Function to reset the game state and display the next question
-function runGame(gameType) {
-  const questionLength = questions.length;
-
-  if (questionIndex < questionLength) {
-    displayScienceQuestion(questionIndex);
-    answered = false; 
-
-    // Enable all buttons
-    const buttons = document.getElementsByClassName('option');
-    for (let btn of buttons) {
-      btn.disabled = false;
-    }
-  
-  } else {
-      document.getElementById('quiz').classList.add('hide');
-      document.getElementById('score-text').innerHTML = `Game over, your score is ${score}`;
-      document.getElementById('home').classList.remove('hide');
-      questionIndex = 0;
-      score = 0;
-  }
 }
 
 // Event listeners for the web page's buttons
 document.addEventListener('DOMContentLoaded', function () {
   let buttons = document.getElementsByClassName('option');
+
+  function buttonClickHandler(event) {
+    const buttonIndex = event.target.getAttribute('value');
+    const button = event.target;
+
+    checkAnswer(buttonIndex, button);
+
+    // Disable all buttons
+    const buttons = document.getElementsByClassName('option');
+    for (let btn of buttons) {
+      btn.disabled = true;
+    }
+  }
 
   for (let button of buttons) {
     if (button.getAttribute('data-type') === 'submit') {
@@ -114,21 +108,35 @@ document.addEventListener('DOMContentLoaded', function () {
         alert('You clicked Submit!');
       });
     } else {
-      button.addEventListener('click', function (event) {
-        const buttonIndex = event.target.getAttribute('value');
-        const button = event.target;
-
-        checkAnswer(buttonIndex, button);
-
-        // Disable all buttons
-        const buttons = document.getElementsByClassName('option');
-        for (let btn of buttons) {
-          btn.disabled = true;
-        }
-      });
+      button.addEventListener('click', buttonClickHandler);
     }
   }
 });
+
+// Function to reset the game state and display the next question
+function runGame(gameType) {
+  const questionLength = questions.length;
+
+  if (questionIndex < questionLength) {
+    displayScienceQuestion(questionIndex);
+    answered = false;
+
+    // Enable all buttons
+    const buttons = document.getElementsByClassName('option');
+    for (let btn of buttons) {
+      btn.disabled = false;
+    }
+  } else {
+    
+    
+    // Game over
+    document.getElementById('quiz').classList.add('hide');
+    document.getElementById('score-text').innerHTML = `Game over, your score is ${score}`;
+    document.getElementById('home').classList.remove('hide');
+    questionIndex = 0;
+    score = 0;
+  }
+}
 
 document.getElementById('show_rules').addEventListener('click', function () {
   document.getElementById('rules').classList.remove('hide');
@@ -140,3 +148,4 @@ document.getElementById('play').addEventListener('click', function () {
   document.getElementById('quiz').classList.remove('hide');
   runGame('science');
 });
+
